@@ -1,0 +1,4 @@
+require('dotenv').config();
+
+const emailPass = process.env.EMAIL_PASS;
+const airtableKey = process.env.AIRTABLE_API_KEY;
