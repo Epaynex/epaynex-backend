@@ -50,4 +50,20 @@ transporter.sendMail(mailOptions, (error, info) => {
   res.status(200).send('Webhook received');
 });
 
+app.post('/api/paystack-webhook', (req, res) => {
+  const event = req.body;
+
+  if (event.event === 'charge.success') {
+    const email = event.data.customer.email;
+   
+    https://epaynexinc.com/api/paystack-webhook
+
+   console.log(`✅ Payment received from ${email}`);
+    
+    // Trigger onboarding email or CRM update here
+  }
+
+  res.sendStatus(200);
+});
+
 app.listen(4242, () => console.log('Webhook server running on port 4242'));
