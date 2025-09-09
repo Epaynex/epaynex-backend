@@ -59,6 +59,16 @@ app.post('/api/paystack-webhook', (req, res) => {
     https://epaynexinc.com/api/paystack-webhook
 
    console.log(`✅ Payment received from ${email}`);
+    if (event.event === 'charge.success') {
+  const { customer } = event.data;
+  const email = customer.email;
+
+  // Send onboarding email
+  sendOnboardingEmail(email);
+
+  console.log(`✅ Payment confirmed and email sent to ${email}`);
+}
+
     
     // Trigger onboarding email or CRM update here
   }
